@@ -1,0 +1,6 @@
+{
+  "name": "Hóa Đơn Tiền Điện Bậc Thang",
+  "description": "Ứng dụng tính tiền điện theo bậc thang lũy tiến chuẩn, chi tiết sản lượng từng bậc, thuế VAT 8% và hỗ trợ in hóa đơn.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

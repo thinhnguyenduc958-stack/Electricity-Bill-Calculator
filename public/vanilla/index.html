@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập 1: Tính tiền điện theo bậc thang</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="no-print">
+      <h1>HÓA ĐƠN TIỀN ĐIỆN</h1>
+      <p>Tính tiền điện theo bậc thang lũy tiến</p>
+    </header>
+
+    <!-- Form Nhập -->
+    <section class="card no-print">
+      <form id="calc-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="customer-code">Mã khách hàng</label>
+            <input type="text" id="customer-code" placeholder="Nhập mã khách hàng" required value="KH-882914">
+          </div>
+          <div class="form-group">
+            <label for="customer-name">Tên khách hàng</label>
+            <input type="text" id="customer-name" placeholder="Nhập tên khách hàng" required value="Nguyễn Văn An">
+          </div>
+          <div class="form-group">
+            <label for="old-index">Chỉ số cũ (kWh)</label>
+            <input type="number" id="old-index" min="0" step="any" placeholder="Nhập số kWh" required value="100">
+          </div>
+          <div class="form-group">
+            <label for="new-index">Chỉ số mới (kWh)</label>
+            <input type="number" id="new-index" min="0" step="any" placeholder="Nhập số kWh" required value="280">
+          </div>
+        </div>
+
+        <!-- Hộp thông báo lỗi -->
+        <div id="error-box" class="error-box"></div>
+
+        <div class="actions">
+          <button type="button" class="btn-secondary" onclick="resetForm()">Xóa làm lại</button>
+          <button type="submit" class="btn-primary">⚡ TÍNH HÓA ĐƠN</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Màn hình Hóa Đơn -->
+    <section id="invoice-section" class="card">
+      <div class="invoice-header">
+        <h2>HÓA ĐƠN TIỀN ĐIỆN</h2>
+        <span>Hóa đơn tiền điện sinh hoạt</span>
+      </div>
+
+      <!-- Thông tin khách hàng -->
+      <div class="customer-info-box">
+        <div class="info-item">
+          <span>Mã khách hàng:</span>
+          <span id="inv-customer-code">...</span>
+        </div>
+        <div class="info-item">
+          <span>Tên khách hàng:</span>
+          <span id="inv-customer-name">...</span>
+        </div>
+        <div class="info-item">
+          <span>Chỉ số cũ:</span>
+          <span id="inv-old-index">...</span>
+        </div>
+        <div class="info-item">
+          <span>Chỉ số mới:</span>
+          <span id="inv-new-index">...</span>
+        </div>
+        <div class="info-item">
+          <span>Sản lượng điện:</span>
+          <span id="inv-kwh" style="color: #2563eb;">...</span>
+        </div>
+      </div>
+
+      <!-- Bảng chi tiết -->
+      <table>
+        <thead>
+          <tr>
+            <th>Bậc</th>
+            <th class="text-center">Số kWh trong bậc</th>
+            <th class="text-right">Đơn giá</th>
+            <th class="text-right">Thành tiền</th>
+          </tr>
+        </thead>
+        <tbody id="inv-tiers-body">
+          <!-- Render động qua JavaScript -->
+        </tbody>
+      </table>
+
+      <!-- Tổng kết -->
+      <div class="totals-area">
+        <div class="totals-box">
+          <div class="total-row">
+            <span>Tổng tiền điện:</span>
+            <strong id="inv-subtotal">... VNĐ</strong>
+          </div>
+          <div class="total-row">
+            <span>VAT 8%:</span>
+            <strong id="inv-vat">... VNĐ</strong>
+          </div>
+          <div class="grand-total total-row">
+            <span>TỔNG THANH TOÁN:</span>
+            <span id="inv-total">... VNĐ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nút chức năng -->
+      <div class="actions no-print" style="margin-top: 24px;">
+        <button type="button" class="btn-secondary" onclick="resetForm()">← Nhập lại</button>
+        <button type="button" class="btn-print" onclick="printInvoice()">🖨 In hóa đơn</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
